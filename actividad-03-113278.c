@@ -29,4 +29,5 @@ int main() {
     }
 
     printf("Total a pagar: $%.2f\n", total);
+    return 0;
 }
