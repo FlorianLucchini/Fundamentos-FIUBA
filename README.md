@@ -1,6 +1,6 @@
 *Estas son las actividades de la materia "Fundamentos de la Programación" de la carrera Ingeniería Informática (Primer año).*
 
-*La materia se dictó en C, por ende, el repositoria es integramente C puro.*
+*La materia se dictó en C, por ende, el repositorio es integramente C puro.*
 
 ### **Estilo de codificación en C (C Coding Style)**
 En esta guía buscaremos presentar una convención para escribir nuestros programas en lenguaje C.
