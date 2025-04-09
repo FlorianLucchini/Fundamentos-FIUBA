@@ -15,4 +15,5 @@ int main() {
     printf("a = %d\n", a);
     scanf("%d", &a);
     printf("a = %d\n", a);
+    return 0;
 }

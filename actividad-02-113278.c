@@ -24,4 +24,5 @@ int main() {
     } else {
         printf("No se puede calcular el factorial del número ingresado\n\n");
     }
+    return 0;
 }

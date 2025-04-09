@@ -16,4 +16,5 @@ int main() {
             printf("El numero %d es divisor.\n", i);
         }
     }
+    return 0;
 }
