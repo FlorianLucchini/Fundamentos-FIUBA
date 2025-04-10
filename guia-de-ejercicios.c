@@ -6,7 +6,7 @@ datos de entrada al usuario.
 
 int main()
 {
-    float base = 0, altura = 0;
+    float base, altura;
     printf("Ingrese la base: \n");
     scanf("%f", &base);
     printf("Ingrese la altura: \n");
@@ -23,8 +23,8 @@ mensaje adecuado.
 
 int main()
 {
-    int hours = 0;
-    float salary_per_hour = 0;
+    int hours;
+    float salary_per_hour;
     printf("Ingrese la cantidad de horas trabajadas: \n");
     scanf("%d", &hours);
     printf("Ingrese el sueldo por hora: \n");
@@ -38,7 +38,7 @@ int main()
 
 int main()
 {
-    int radius = 0;
+    int radius;
     printf("Ingrese el radio de la esfera: \n");
     scanf("%d", &radius);
     printf("El volumen es: %.2f\n", 4 * 3.14 * (radius * radius * radius) / 3);
@@ -51,7 +51,7 @@ número ingresado por el usuario. Usar fórmula [ n.(n+1) ] / 2
 
 int main()
 {
-    int num = 0;
+    int num;
     printf("Ingrese el número: \n");
     scanf("%d", &num);
     printf("La suma de los n primeros números es: %d\n", (num * (num + 1)) / 2);
@@ -66,7 +66,7 @@ b) es mayor, menor o igual a cero.
 
 int main()
 {
-    int num = 0;
+    int num;
     printf("Ingrese un numero: \n");
     scanf("%d", &num);
 
@@ -94,7 +94,7 @@ int main()
 
 int main()
 {
-    int num1 = 0, num2 = 0, num3 = 0;
+    int num1, num2, num3;
 
     printf("Ingrese tres numeros:\n");
     scanf("%d %d %d", &num1, &num2, &num3);
@@ -118,7 +118,7 @@ rango indicarle del error al usuario.
 
 int main()
 {
-    int day = 0;
+    int day;
     printf("Ingresar un número (del 1 al 7) que representará un día de la semana.\n");
     scanf("%d", &day);
 
@@ -159,7 +159,7 @@ días de dicho mes.
 
 int main()
 {
-    int month = 0;
+    int month;
     printf("Ingresar un número (del 1 al 12) que representará un mes.\n");
     scanf("%d", &month);
 
@@ -216,12 +216,11 @@ Luego el programa debe mostrar la temperatura ingresada, convertida en la otra
 unidad.
 La relación entre temperaturas Celsius y Fahrenheit está dada por la fórmula:
 C=5.0 / 9.0 * (F − 32)
-*/
 
 int main()
 {
-    float temp = 0;
-    char unit = "";
+    float temp;
+    char unit;
     printf("Ingrese la temperatura:\n");
     scanf("%f", &temp);
     getchar();
@@ -234,7 +233,7 @@ int main()
             printf("La temperatura en Fahrenheit es: %.2f\n", temp * 9.0 / 5.0 + 32);
             break;
         case 'F':
-            printf("La temperatura en Celsius es: %.2f\n", temp * 5.0 / 9.0 - 32);
+            printf("La temperatura en Celsius es: %.2f\n", (temp  - 32) * 5.0 / 9.0);
             break;
         default:
             printf("La unidad ingresada no es valida (debe ser C o F).\n");
@@ -242,3 +241,36 @@ int main()
     }
     return 0;
 }
+*/
+
+/*
+
+*/
+
+
+
+
+
+
+
+
+
+
+/*
+#include <stdio.h>
+void main(){
+    int lado1, lado2, lado3;
+    printf("Ingrese el lado 1 del triangulo: ");
+    scanf("%d", &lado1);
+    printf("Ingrese el lado 2 del triangulo: ");
+    scanf("%d", &lado2);
+    printf("Ingrese el lado 3 del triangulo: ");
+    scanf("%d", &lado3);
+    if((lado1==lado2)&&(lado2==lado3))
+    printf("El triangulo es Equilatero\n");
+else if((lado1!=lado2)&&(lado2!=lado3)&&(lado3!=lado1))
+    printf("El triangulo es Escaleno\n");
+else
+    printf("El tirangulo es Isosceles\n");
+}
+*/
