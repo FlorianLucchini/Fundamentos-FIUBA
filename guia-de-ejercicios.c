@@ -75,7 +75,7 @@ int main()
         printf("El numero es par.\n");
     else
         printf("El numero es impar.\n");
-    
+
     // b)
     if(num > 0)
         printf("El numero es mayor que cero.\n");
@@ -106,7 +106,7 @@ int main()
             printf("El mayor es el numero %d\n", num2);
         else
             printf("El mayor es el numero %d\n", num3);
-    
+
     return 0;
 }
 */
@@ -244,33 +244,118 @@ int main()
 */
 
 /*
-
+10) Dada una fecha con año, mes y día, informar si es correcta o no. Solicitarle los datos al usuario de forma independiente. Considerar años bisiestos.
 */
-
-
-
-
-
-
-
 
 
 
 /*
+Ingresar las 3 medidas de los lados de un triangulo y mostrar que tipo de triangulo es Equilatero, Escaleno, Isosceles.
+
 #include <stdio.h>
-void main(){
-    int lado1, lado2, lado3;
+int main()
+{
+    int lado_1, lado_2, lado_3;
+
     printf("Ingrese el lado 1 del triangulo: ");
-    scanf("%d", &lado1);
+    scanf("%d", &lado_1);
+
     printf("Ingrese el lado 2 del triangulo: ");
-    scanf("%d", &lado2);
+    scanf("%d", &lado_2);
+
     printf("Ingrese el lado 3 del triangulo: ");
-    scanf("%d", &lado3);
-    if((lado1==lado2)&&(lado2==lado3))
-    printf("El triangulo es Equilatero\n");
-else if((lado1!=lado2)&&(lado2!=lado3)&&(lado3!=lado1))
-    printf("El triangulo es Escaleno\n");
-else
-    printf("El tirangulo es Isosceles\n");
+    scanf("%d", &lado_3);
+
+    if(lado_1 == lado_2 && lado_2==lado_3)
+        printf("El triangulo es Equilatero.\n");
+
+    else if(lado_1 != lado_2 && lado_2 != lado_3 && lado_3 != lado_1)
+        printf("El triangulo es Escaleno.\n");
+
+    else
+        printf("El tirangulo es Isosceles.\n");
+
+    return 0;
 }
 */
+
+/*
+Solicitar al usuario el ingreso de la fecha actual, el ingreso de una fecha de nacimiento e indicar la edad correspondiente.
+
+#include <stdio.h>
+int main()
+{
+    int dia, mes, ano, dia_nacimiento, mes_nacimiento, ano_nacimiento, edad;
+    printf("Ingrese la fecha actual:\n");
+    printf("Día: ");
+    scanf("%d", &dia);
+    printf("Mes: ");
+    scanf("%d", &mes);
+    printf("Año: ");
+    scanf("%d", &ano);
+
+    printf("Ingrese su fecha de nacimiento:\n");
+    printf("Día: ");
+    scanf("%d", &dia_nacimiento);
+    printf("Mes: ");
+    scanf("%d", &mes_nacimiento);
+    printf("Año: ");
+    scanf("%d", &ano_nacimiento);
+
+    edad = ano - ano_nacimiento;
+
+    if (mes < mes_nacimiento || (mes == mes_nacimiento && dia < dia_nacimiento))
+        edad -= 1;
+
+    if (edad >= 0)
+        printf("Usted tiene %d años.\n", edad);
+    else
+        printf("Las fechas ingresadas no son válidas.\n");
+
+    return 0;
+}
+*/
+
+/*
+Ingresar una serie de numeros enteros finalizada en 0 y mostrar el mayor numero, el menor numero y el promedio de la serie
+
+#include <stdio.h>
+int main()
+{   
+    int num, mayor, menor, cantidad = 0, suma = 0;
+
+    printf("Ingrese una serie de numeros enteros finalizada en 0:\n");
+    scanf("%d", &num);
+
+    mayor = num;
+    menor = num;
+
+    while (num != 0)
+    {
+        if (num > mayor)
+            mayor = num;
+        else if (num < menor)
+            menor = num;
+        suma += num;
+        cantidad++;
+        printf("Ingrese un numero: ");
+        scanf("%d", &num);
+    }
+
+    if (cantidad > 0 ) {
+        printf("El mayor numero es %d\n", mayor);
+        printf("El menor numero es %d\n", menor);
+        printf("El promedio es %d\n", suma / cantidad);
+    } else {
+        printf("No se ingresaron numeros.\n");
+    }
+
+    return 0;
+}
+*/
+
+/*
+// Solicitar al usuario el ingreso de una fecha e indicar que numero de dia del año es. Considerar años bisiestos.
+//Ejemplo 1 de febrero es el numero 32 del año
+*/
+
