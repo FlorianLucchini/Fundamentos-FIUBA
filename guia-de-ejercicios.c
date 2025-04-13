@@ -357,5 +357,35 @@ int main()
 /*
 // Solicitar al usuario el ingreso de una fecha e indicar que numero de dia del año es. Considerar años bisiestos.
 //Ejemplo 1 de febrero es el numero 32 del año
-*/
 
+int main() 
+{
+    int day, month, year, i, num = 0;
+    printf("Ingrese la fecha: \n");
+    printf("Día: ");
+    scanf("%d", &day);
+    printf("Mes: ");
+    scanf("%d", &month);
+    printf("Año: ");
+    scanf("%d", &year);
+
+    num += day;
+
+    for (i = 1; i < month; i++)
+    {
+        if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
+            num += 31;
+        else 
+            if (i == 2)
+                if ( year % 4 == 0 && ( year % 100 != 0 || year % 400 == 0 ) )
+                    num += 29;
+                else
+                    num += 28;
+            else
+                num += 30;
+    }
+    
+    printf("El numero de dia del año es: %d\n", num);
+    return 0;
+}
+*/
