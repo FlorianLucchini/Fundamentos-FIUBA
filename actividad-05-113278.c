@@ -21,10 +21,16 @@ int main()
     // Variables (Separadas para mayor legibilidad).
     int legajo_actual, legajo_max, legajo_min;
     int nota_1, nota_2, nota_3;
-    float promedio_actual, promedio_max = 0, promedio_min = 0;
+    float promedio_actual, promedio_max = -1, promedio_min = -1;
 
     printf("Ingrese su legajo:\n");
     scanf("%d", &legajo_actual);
+
+    if ( legajo_actual == 0 )
+    {
+        printf("No hay datos ingresados.\n");
+        return 0;
+    }
 
     while ( legajo_actual != 0 )
     {
@@ -43,16 +49,23 @@ int main()
         printf(", %d]", nota_3);
         printf(", promedio: %.2f\n", promedio_actual);
 
-        if (promedio_actual > promedio_max)
-        {   
-            printf("\n\nENTRE EN IF\n\n");
-            promedio_max = promedio_actual;
-            legajo_max = legajo_actual;
-        } else
+        if ( promedio_max == -1 || promedio_min == -1 )
         {
-            printf("\n\nENTRE EN ELSE\n\n");
+            promedio_max = promedio_actual;
             promedio_min = promedio_actual;
-            legajo_min = legajo_actual;
+        }
+        else
+        {
+            if (promedio_actual > promedio_max)
+            {   
+                promedio_max = promedio_actual;
+                legajo_max = legajo_actual;
+            } 
+            if (promedio_actual < promedio_min)
+            {
+                promedio_min = promedio_actual;
+                legajo_min = legajo_actual;
+            }
         }
 
         printf("Ingrese su legajo:\n");
@@ -60,18 +73,10 @@ int main()
     }
 
     printf("\n\n");
-
-    if ( promedio_max != 0 && promedio_min != 0 )
-    {
-        printf("Mayor promedio: %.2f", promedio_max);
-        printf(", legajo: %d\n", legajo_max);
-        printf("Menor promedio: %.2f", promedio_min);
-        printf(", legajo: %d\n", legajo_min);
-    }
-    else
-    {
-        printf("No hay datos ingresados.\n");
-    }
+    printf("Mayor promedio: %.2f", promedio_max);
+    printf(", legajo: %d\n", legajo_max);
+    printf("Menor promedio: %.2f", promedio_min);
+    printf(", legajo: %d\n", legajo_min);
 
     return 0;
 }
