@@ -1,15 +1,24 @@
 /*
+a)
 Escribir una función que reciba un valor y calcule el factorial del mismo.
 No debe imprimir el valor, debe solamente devolverlo.
 Si no se puede calcular el factorial del valor recibido, la función deberá devolver 0, de lo contrario deberá devolver el valor calculado.
+
+
+    a)
+    printf("El factorial de %d es: %llu\n", 0, calcular_factorial(0));
+    printf("El factorial de %d es: %llu\n", 3, calcular_factorial(3));
+    printf("El factorial de %d es: %llu\n", 6, calcular_factorial(6));
+    printf("El factorial de %d es: %llu\n", -10, calcular_factorial(-10));
 */
+
 
 #include <stdio.h>
 
-int calcular_factorial(int num)
+unsigned long long calcular_factorial(int num)
 {
     int i;
-    long long fact = 1;
+    unsigned long long fact = 1;
 
     if ( num >= 0 )
     {
@@ -27,10 +36,122 @@ int calcular_factorial(int num)
     return fact;
 }
 
+/*
+b)
+Escribir una función que reciba dos valores enteros y devuelva la suma de los valores entre el menor y el mayor de dichos números, incluídos.
+No debe imprimir el valor, debe solamente devolverlo.
+
+Invocarla para los valores (-2, 2); (5, -10); (0, -4); (10, 15) y (-3, -25); mostrando en cada caso lo que devuelve.
+
+    // b)
+    printf("%d\n", sumar_rango_incluido(2, 2));
+    printf("%d\n", sumar_rango_incluido(5, -10));
+    printf("%d\n", sumar_rango_incluido(0, -4));
+    printf("%d\n", sumar_rango_incluido(10, 15));
+    printf("%d\n", sumar_rango_incluido(-3, -25));
+*/
+
+int sumar_rango_incluido(int num_1, int num_2)
+{
+    int min, max, suma = 0;
+    if (num_1 > num_2)
+    {
+        min = num_2;
+        max = num_1;
+    }
+    else
+    {
+        min = num_1;
+        max = num_2;
+    }
+
+    while (min <= max)
+    {
+        suma += min;
+        min++;
+    }
+    
+    return suma;
+}
+
+
+/*
+c)
+Escribir un programa que solicite el ingreso de valores, que representarán una cantidad de segundos. 
+El programa deberá informar al usuario, el equivalente en días, horas, minutos y segundos.
+Se debe validar que el valor ingresado sea entero y positivo, de lo contrario, deberá mostrarse el mensaje: “Valor ingresado inválido”.
+El ingreso de valores finaliza cuando el usuario ingrese como valor 0.
+
+// Tomamos segs.
+// Valor entero y positivo.
+// Devolver equivalente en dias, horas, minutos y segs.
+*/
+
+int obtener_datos(int *segundos)
+{
+    printf("Ingrese una cantidad de segundos, o 0 para salir: ");
+    scanf("%d", segundos);
+}
+
+int calcular_dias(int *segundos)
+{
+    int dias = *segundos / 86400;
+    *segundos %= 86400;
+    return dias;
+}
+
+
+int calcular_horas(int *segundos)
+{
+    int horas = *segundos / 3600;
+    *segundos %= 3600;
+    return horas;
+}
+
+
+int calcular_minutos(int *segundos)
+{
+    int minutos = *segundos / 60;
+    *segundos %= 60;
+    return minutos;
+}
+
+void mostrar_conversion(int ds, int hs, int mins, int segs)
+{
+    printf("Resultado: Dias: %d, Horas: %d, Minutos: %d, Segundos: %d\n", ds, hs, mins, segs);
+
+} 
+
+int es_negativo(int segundos)
+{
+    return segundos < 0;
+}
+
+int es_distinto_de_cero(int segundos)
+{
+    return segundos != 0;
+}
+
 int main()
 {
-    printf("El factorial de 0 es: %d\n", calcular_factorial(0));
-    printf("El factorial de 3 es: %d\n", calcular_factorial(3));
-    printf("El factorial de 6 es: %d\n", calcular_factorial(6));
-    printf("El factorial de -10 es: %d\n", calcular_factorial(-10));
+    int segundos, ds, hs, mins, segs;
+    obtener_datos(&segundos);
+    while (es_distinto_de_cero(segundos))
+    {
+        if (es_negativo(segundos)) 
+        {
+            printf("Valor ingresado inválido");
+        }
+        else
+        {
+            ds = calcular_dias(&segundos);
+            hs = calcular_horas(&segundos);
+            mins = calcular_minutos(&segundos);
+            segs = segundos;
+            mostrar_conversion(ds, hs, mins, segs);
+        }
+        obtener_datos(&segundos);
+    }
+
+    return 0;
 }
