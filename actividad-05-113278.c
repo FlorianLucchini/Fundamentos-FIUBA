@@ -35,7 +35,7 @@ int validar_dato(int num)
 unsigned int contar_divisores(int num)
 {
     int i, cant_divisores = 0;
-
+    
     for (i = 1; i <= num; i++)
     {
         if (num % i == 0)
