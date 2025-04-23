@@ -215,7 +215,7 @@ void sumar_filas(int matriz[FILAS][COLUMNAS], int vector[FILAS])
         for (int j = 0; j < COLUMNAS; j++)
             vector[i] += matriz[i][j];
 }
-
+/*
 int main() {
 
     // Declaramos una matriz de enteros
@@ -243,3 +243,4 @@ int main() {
 
     return 0;
 }
+*/
