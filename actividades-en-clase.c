@@ -131,7 +131,7 @@ int es_distinto_de_cero(int segundos)
 {
     return segundos != 0;
 }
-
+/*
 int main()
 {
     int segundos, ds, hs, mins, segs;
@@ -152,6 +152,94 @@ int main()
         }
         obtener_datos(&segundos);
     }
+
+    return 0;
+}
+*/
+
+#include <stdio.h>
+
+#define FILAS 4
+#define COLUMNAS 4
+
+void imprimir_matriz(int matriz[FILAS][COLUMNAS])
+{
+    int i;
+
+    printf("Matriz:\n");
+    for (i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLUMNAS; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void ingresar_valores_matriz(int matriz[FILAS][COLUMNAS])
+{
+    int i;
+    printf("Ingrese los vaores de la matriz.\n");
+    for (i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLUMNAS; j++) {
+            printf("Ingrese el valor de la posicion (%d, %d): ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int suma_diagonal_principal(int matriz[FILAS][COLUMNAS])
+{
+    int i, suma = 0;
+
+    for (i = 0; i < FILAS; i++)
+        suma += matriz[i][i];
+
+    return suma;
+}
+
+int suma_diagonal_secundaria(int matriz[FILAS][COLUMNAS])
+{
+    int i, suma = 0;
+
+    for (i = 0; i < FILAS; i++)
+        suma += matriz[i][COLUMNAS - i - 1];
+
+    return suma;
+}
+
+void sumar_filas(int matriz[FILAS][COLUMNAS], int vector[FILAS])
+{
+    int i;
+    for (i = 0; i < FILAS; i++)
+        for (int j = 0; j < COLUMNAS; j++)
+            vector[i] += matriz[i][j];
+}
+
+int main() {
+
+    // Declaramos una matriz de enteros
+    int matriz[FILAS][COLUMNAS];
+    int suma_1, suma_2;
+    int i, vector[FILAS] = {0, 0, 0}, size_vector = sizeof(vector) / sizeof(int);
+    
+    // Ingreso valores
+    ingresar_valores_matriz(matriz);
+
+    // Imprimimos la matriz
+    imprimir_matriz(matriz);
+
+    suma_1 = suma_diagonal_principal(matriz);
+    printf("La suma de la diagonal principal es: %d.\n", suma_1);
+
+    
+    suma_2 = suma_diagonal_secundaria(matriz);
+    printf("La suma de la diagonal principal es: %d.\n", suma_2);
+
+    sumar_filas(matriz, vector);
+    printf("La suma de cada fila es: \n");
+    for(i = 0; i < size_vector; i++)
+        printf("La suma de la fila %d es: %d.\n", i, vector[i]);
 
     return 0;
 }
