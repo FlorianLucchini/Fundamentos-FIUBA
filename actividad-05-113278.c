@@ -47,7 +47,7 @@ unsigned int contar_divisores(int num)
 
 int es_primo(int num)
 {
-    int cant_divisores, es_primo = 0;
+    int cant_divisores, es_primo = 0; 
 
     cant_divisores = contar_divisores(num);
 
