@@ -80,7 +80,7 @@ El ingreso de valores finaliza cuando el usuario ingrese como valor 0.
 // Tomamos segs.
 // Valor entero y positivo.
 // Devolver equivalente en dias, horas, minutos y segs.
-*/
+
 
 int obtener_datos(int *segundos)
 {
@@ -123,7 +123,7 @@ int es_distinto_de_cero(int segundos)
 {
     return segundos != 0;
 }
-/*
+
 int main()
 {
     int segundos, ds, hs, mins, segs;
@@ -240,7 +240,7 @@ int main() {
     return 0;
 }
 */
-
+/*
 // Mostrar el promedio de notas del curso.
 // Mostrar todas las notas superiores al promedio calculado.
 
@@ -304,3 +304,92 @@ int main()
 
     return 0;
 }
+*/
+
+// Escribir un programa en C, que:
+// - declare una cadena para almacenar como máximo 40 caracteres y como valor inicial le asigne tu nombre y apellido
+// - recorra la cadena e imprima sólo las consonantes, una debajo de la otra
+// - indique cuantas consonantes hay en tu nombre y apellido
+/*
+#include <stdio.h>
+
+#define MF 40
+
+typedef char Tvec[MF];
+
+int es_vocal(char c)
+{
+    return (c == 'a' && c == 'e' && c == 'i' && c == 'o' && c == 'u');
+}
+
+
+int main()
+{
+    Tvec cadena = "Florian Lucchini";
+    int i = 0;
+    int cont = 0;
+
+    while(cadena[i] != '\0')
+    {
+        char car = cadena[i];
+        if(es_vocal(car))
+        {
+            printf("%c\n", car);
+            cont++;
+        }
+        i++;
+    }
+
+    printf("La cantidad de consonantes es: %d", cont);
+    return 0;
+}
+*/
+
+// Escribir un programa modular que implemente la función del burbujeo optimizado para ordenar un arreglo compuesto por los dígitos de tu DNI. Suponé com máximo físico 10 dígitos enteros.
+// Invocar la función desde el main.
+// Mostrá los valores antes y después del ordenamiento.
+
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MF 10
+
+typedef int Tdni[10];
+
+void intercambiar_elementos(int *elem_1, int *elem_2)
+{
+    int aux;
+    aux = *elem_1;
+    *elem_1 = *elem_2;
+    *elem_2 = aux;
+}
+
+void bubble_sort_optimized(Tdni dni, int ml)
+{
+    int i = 1, j;
+    bool se_intercambiaron = true;
+
+    while ((i < ml) && se_intercambiaron)
+    {
+        se_intercambiaron = false;
+        for (j = 0; j < ml - i; j++)
+        {
+            if (dni[j] > dni[j+1])
+            {
+                intercambiar_elementos(&dni[j], &dni[j + 1]);
+                se_intercambiaron = true;
+            }
+        }
+        i++;
+    }
+}
+/*
+void mostrar_dni(Tdni dni, int ml)
+{
+    int i;
+    printf("El dni quedo asi: \n");
+    for(i = 0; i < ml; i++)
+        printf("%d", dni[i]);
+    printf("\n\n");
+}
+*/
