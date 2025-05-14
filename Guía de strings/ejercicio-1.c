@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define MF 50
+#define MF 51
 
 typedef char Tcadena[MF];
 

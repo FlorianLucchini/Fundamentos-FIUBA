@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define MF 31
 
@@ -26,16 +27,30 @@ int count_non_alphabetic_chars(Tstr str)
         i++;
     }
 
-    printf("La cantidad de caracteres no alfabéticos en %s es de: %d.\n", str, counter);
 
     return counter;
 }
 
 int main()
 {
-    count_non_alphabetic_chars("----");
-    count_non_alphabetic_chars("-a-B");
-    count_non_alphabetic_chars("-23x");
-    count_non_alphabetic_chars("-aIl");
+    Tstr str;
+    int cnt;
+    
+    strcpy(str, "----");
+    cnt = count_non_alphabetic_chars(str);
+    printf("La cantidad de caracteres no alfabéticos en %s es de: %d.\n", str, cnt);
+
+    strcpy(str, "-a-B");
+    cnt = count_non_alphabetic_chars(str);
+    printf("La cantidad de caracteres no alfabéticos en %s es de: %d.\n", str, cnt);
+
+    strcpy(str, "-23x");
+    cnt = count_non_alphabetic_chars(str);
+    printf("La cantidad de caracteres no alfabéticos en %s es de: %d.\n", str, cnt);
+
+    strcpy(str, "-aIl");
+    cnt = count_non_alphabetic_chars(str);
+    printf("La cantidad de caracteres no alfabéticos en %s es de: %d.\n", str, cnt);
+
     return 0;
 }
