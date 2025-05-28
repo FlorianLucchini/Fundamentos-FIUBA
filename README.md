@@ -1,4 +1,4 @@
-*Estas son las actividades de la materia "Fundamentos de la Programación" de la carrera Ingeniería Informática (Primer año).*
+*Estas son las actividades de la materia "Fundamentos de la Programación" de la carrera Ingeniería Informática (Primer año), de la cátedra Azcurra.*
 
 *La materia se dictó en C, por ende, el repositorio es integramente C puro.*
 
