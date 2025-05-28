@@ -4,6 +4,23 @@
         "stdio.h": "c",
         "numbers": "c",
         "stdbool.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "array": "c",
+        "deque": "c",
+        "string": "c",
+        "unordered_map": "c",
+        "vector": "c",
+        "string_view": "c",
+        "format": "c",
+        "initializer_list": "c",
+        "span": "c",
+        "text_encoding": "c",
+        "charconv": "c",
+        "optional": "c",
+        "system_error": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c"
     }
 }
