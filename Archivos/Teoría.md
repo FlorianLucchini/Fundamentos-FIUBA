@@ -128,3 +128,23 @@ Solo están formados por caracteres, a cada caracter se le corresponde un byte. 
 - ".txt" --> Sin delimitadores.
 - Otro tipo de delimitadores; tabulaciones, o longitud fija.
 
+## Acceso
+Utilizaremos el formato secuancial, como veniamos haciendo antes con los binarios.
+
+# Leer
+Tenemos tres alternativas:
+
+- fgetc(<puntero_al_archivo>)
+
+- fgets(<cadena_destino>, <cantidad_bytes>, <puntero_al_archivo>)
+
+- fscanf(<puntero_al_archivo>, <cadena_destino>)
+
+# Escribir
+Tenemos tres alternativas:
+
+- fputc(<caracter>, <puntero_al_archivo>)
+    
+- fputs(<cadena>, <puntero_al_archivo>)
+
+- fprintf(<puntero_al_archivo>, <cadena>)
