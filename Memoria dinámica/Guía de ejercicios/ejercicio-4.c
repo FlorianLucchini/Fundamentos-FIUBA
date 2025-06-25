@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-// Used to execute the code.
-
 // Escribir un programa el cual reserve memoria dinámica para almacenar un struct del tipo t_alumno (ver anexo). Luego solicitar al usuario que ingrese los datos del alumno y almacenarlos en la memoria previamente reservada.
 // Mostrar luego todos los datos del alumno. Liberar la memoria reservada al finalizar el programa.
 
@@ -18,7 +12,6 @@ typedef struct {
 
 int cargar_alumno(T_alumno *alumno)
 {
-    printf("Ingrese los datos del alumno.\n");
     printf("Ingerese el padron: ");
     scanf("%d", &alumno->padron);
     printf("Ingrese el nombre: ");
@@ -30,7 +23,6 @@ int cargar_alumno(T_alumno *alumno)
 
 int mostrar_datos_alumno(T_alumno alumno)
 {
-    printf("Los datos del alumno: ");
     printf("\nPadron: %d", alumno.padron);
     printf("\nNombre: %s", alumno.nombre);
     printf("\nApellido: %s\n", alumno.apellido);
