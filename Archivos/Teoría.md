@@ -1,150 +1,155 @@
-### Archivos
-Conexión de datos; que tienen una relación entre si. Se almacenan como unidad en un dispositivo, nos habilita a almacenar los datos por largos periodos de tiempo.
+# 📁 Archivos en C
 
-## Caractrísticas
+## 🧩 ¿Qué es un archivo?
+Un archivo es una unidad lógica de almacenamiento que conecta y preserva datos relacionados entre sí, permitiendo su conservación a largo plazo, incluso después de cerrar el programa.
 
-# Son dinámicos:
-Su tamaño no es fijo (Algo que hasta ahora no habíamos usado).
-Están limitados por el medio que se use para almacenarlos.
+---
 
-# Tipos
-- Binarios.
-- De Text; .csv, .txt. A cada byte le asigna un caracter. Archivos de texto plano.
+## ✨ Características
 
-## Modalidad de acceso
-Esto nos permite clasificarlos. Según la modalidad elegida, se manipularán de una forma u otra.
+- **Dinámicos:** su tamaño puede variar (a diferencia de estructuras como arrays).
+- **Persistentes:** los datos se almacenan fuera de la memoria RAM.
+- **Limitados por el medio físico:** disco, USB, etc.
 
-# Secuenciales
-- Accedemos elemento a elemento y así lo trataremos; uno por uno.
-- Siempre comenzaremos por el primero de los elementos.
-- Solo podremos agregar elementos al final del archivo (**NO** permite intercambiar elementos).
-- Los elementos que ya están en el archivo **NO** pueden modificarse.
+---
 
-# Directo o Aleatorio
-- Tiene ventajas sobre el anterior; si conocemos la ubicación de un elemento, podremos acceder directamente al mismo. (Azcurra solo abarca secuenciales).
-- Se pueden agregar archivos al final.
-- Se pueden modificar elementos ya existentes.
+## 📂 Tipos de Archivos
 
-## Marca de fin
-Todos los archivos tienen una flag o marca que señaliza el final del mismo.
+- **Binarios:** almacenan datos en forma cruda, sin interpretación como texto.
+- **De texto:** `.txt`, `.csv`, etc. Cada byte se interpreta como un carácter.
 
-### Pasos para usar un archivo
+---
 
-## 1. Declaramos una variable de tipo puntero a una estructura FILE
+## 🔄 Modalidades de Acceso
+
+### 📜 Acceso Secuencial
+
+- Se accede elemento por elemento, de forma lineal.
+- Siempre se comienza desde el primer elemento.
+- Solo permite agregar elementos al final.
+- **No se pueden modificar ni reordenar elementos existentes.**
+
+### 🎯 Acceso Directo o Aleatorio
+
+- Se puede acceder directamente a una posición si se conoce.
+- Permite modificar elementos existentes.
+- También permite agregar al final.
+> ℹ️ En esta cursada se aborda **acceso secuencial**.
+
+---
+
+## 🔚 Marca de Fin
+Todos los archivos poseen una **flag** que marca el final del archivo (EOF).
+
+---
+
+## 🧱 Pasos para Usar un Archivo en C
+
+### 1️⃣ Declarar un puntero a `FILE`
 ```c
-    FILE *archivo
+FILE *archivo;
 ```
 
-## 2. Abrir el archivo
-Utilizaremos una funcion llamada fopen("<ruta> <nombre_del_archivo>", "<modo_de_apertura>"). Si no puede abrir el archivo nos va a devolver **null**.
+### 2️⃣ Abrir el archivo con `fopen()`
+```c
+archivo = fopen("C:\\datos\\productos.dat", "r+");
+```
+**Modos de apertura:**
+| Modo | Descripción |
+|------|-------------|
+| `"r"`  | Solo lectura (el archivo debe existir). |
+| `"r+"` | Lectura y escritura (debe existir). |
+| `"w"`  | Escritura (crea o sobreescribe). |
+| `"a"`  | Agregar al final (crea si no existe). |
+| `"b"`  | Archivo binario (se combina con los anteriores, ej. `"rb"`). |
+
+---
+
+## 📥 Lectura de archivos binarios con `fread()`
 
 ```c
-    archivo = fopen("C:\\datos\\productos.dat", "r+");
+fread(&registro, sizeof(registro), 1, archivo);
 ```
 
-# Modo de apertura 
-- "r" --> Solo lectura. **(Exige que exista el archivo)**
-- "r+" --> Lectura y escritura. **(Exige que exista el archivo)**
-- "w" --> Sobreescritura. **(Si no existe lo crea, si ya existe se sobreescribe)**
-- "a" --> Agregar datos. **(Si no existe lo crea)**
-- "b" --> Indica archivo binario.
+- **Puntero:** dirección donde guardar los datos leídos.
+- **Tamaño:** `sizeof(registro)` indica cuántos bytes leer.
+- **Cantidad:** cuántos elementos leer (usualmente 1).
+- **Archivo:** puntero al archivo abierto.
 
-### Pasos para leer un archivo
-Utilizaremos la funcion fread(<puntero_registro>, <tamaño>, <cantidad>, <dir_archivo>). Esta función nos retorna el numero de registros leídos (Siempre devuelve 1 en este caso).
+---
 
+## 📤 Escritura de archivos binarios con `fwrite()`
 
-## Puntero
-Dirección en la cual se deja la información leida del archivo. Un puntero a un struct que me permita almacenar los datos que traigo del archivo.
-
-## Tamaño
-Cantidad de bytes a leer del archivo, se vincula con la cantidad de bytes que tiene mi struct.
-
-## Cantidad
-Elementos a leer, o sea de a cuantos; siempre usaremos 1.
-
-## Dirección del archivo
-Vamos a usar el puntero archivo de tipo FILE, que declaramos antes.
-
-## Ejemplo
 ```c
-    fread(&registro, sizeof(registro), 1, archivo);
+fwrite(&registro, sizeof(registro), 1, archivo);
 ```
 
-### Pasos para escribir un archivo
-Utilizaremos la funcion  fwrite(<puntero_registro>, <tamaño>, <cantidad>, <dir_archivo>). Esta función nos retorna el numero de registros grabados (Siempre devuelve 1 en este caso).
+- **Puntero:** dirección desde donde tomar los datos a escribir.
+- **Tamaño:** cantidad de bytes a escribir.
+- **Cantidad:** cuántos registros escribir (usualmente 1).
+- **Archivo:** puntero al archivo abierto.
 
-## Puntero
-Dirección a partir de la cual voy a extraer información para escribirla en el archivo. Un puntero a un struct que me permita extraer los datos que envio al archivo.
+---
 
-## Tamaño
-Cantidad de bytes a leer del archivo, se vincula con la cantidad de bytes que tiene mi struct.
+## 🔍 Control de fin de archivo con `feof()`
 
-## Cantidad
-Elementos a leer, o sea de a cuantos; siempre usaremos 1.
+Detecta si se llegó al final del archivo.
 
-## Dirección del archivo
-Vamos a usar el puntero archivo de tipo FILE, que declaramos antes.
-
-## Ejemplo
 ```c
-    fwrite(&registro, sizeof(registro), 1, archivo);
+int feof(FILE *fichero);
 ```
 
-## Control de fin de archivo
-Para determinar si un archivo termino utilizamos la funcion feof(). Devuelve 0 si es el final, en caso contrario devuelve otro valor.
-
-# Definición:
+### Ejemplo:
 ```c
-    int feof(FILE *fichero)
+while (!feof(archivo)) {
+    // leer datos...
+}
 ```
 
-# Ejemplo:
+---
+
+## 🔐 Cierre de archivo con `fclose()`
+
+Siempre que se finaliza la manipulación de un archivo se debe cerrarlo:
+
 ```c
-    while ( !feof( archivo ) )
-    {
-        ...
-    }
+fclose(archivo);
 ```
 
-## Cierre del archivo
-Una vez se terminan de realizar las operaciones respectivas, se debe cerrar el archivo. No es forma adecuada cerrar el programa directamente, ya que podrían perderse datos.
-Evitar varias aperturas y cierres en un mismo programa.
+> ⚠️ No cerrar archivos puede causar pérdida de datos o corrupción.
 
-# Definición:
+---
+
+# 📄 Archivos de Texto
+
+Archivos donde cada carácter se almacena como un byte según la codificación ASCII o similar. Son interpretables por humanos.
+
+### 📑 Tipos comunes:
+
+- `.txt` → texto sin delimitadores.
+- `.csv` → campos separados por coma.
+- Otros: delimitados por tabulaciones, longitud fija, etc.
+
+---
+
+## 📖 Lectura en archivos de texto
+
+### Opciones:
+
 ```c
-    int fclose(FILE *fichero)
+fgetc(archivo);        // lee un solo carácter
+fgets(buffer, n, archivo); // lee una línea completa
+fscanf(archivo, "..."); // lee con formato
 ```
 
-# Ejemplo
+---
+
+## ✍ Escritura en archivos de texto
+
+### Opciones:
+
 ```c
-    fclose( archivo );
+fputc('c', archivo);      // escribe un carácter
+fputs("cadena", archivo); // escribe una cadena
+fprintf(archivo, "...");  // escribe con formato
 ```
-
-### Archivos de texto
-Solo están formados por caracteres, a cada caracter se le corresponde un byte. Esto permite una interpretación inmediata.
-
-## Tipos
-- ".csv" --> Delimitados por coma.
-- ".txt" --> Sin delimitadores.
-- Otro tipo de delimitadores; tabulaciones, o longitud fija.
-
-## Acceso
-Utilizaremos el formato secuancial, como veniamos haciendo antes con los binarios.
-
-# Leer
-Tenemos tres alternativas:
-
-- fgetc(<puntero_al_archivo>)
-
-- fgets(<cadena_destino>, <cantidad_bytes>, <puntero_al_archivo>)
-
-- fscanf(<puntero_al_archivo>, <cadena_destino>)
-
-# Escribir
-Tenemos tres alternativas:
-
-- fputc(<caracter>, <puntero_al_archivo>)
-    
-- fputs(<cadena>, <puntero_al_archivo>)
-
-- fprintf(<puntero_al_archivo>, <cadena>)

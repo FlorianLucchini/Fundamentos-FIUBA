@@ -1,69 +1,97 @@
-### Registros
-Se llama Registros, Structs, Records.
-Permite almacenar datos de distintos tipos en una misma variable (El cual era nuestro talón de aquiles en los arrays).
+# 🧾 Registros en C (Structs)
 
-## Sintaxis:
+## 🧠 ¿Qué son?
+Los **registros**, también conocidos como `structs` o `records`, permiten agrupar datos de **diferentes tipos** dentro de una misma variable. Son ideales cuando necesitamos representar entidades complejas, como un alumno, producto, etc.
+
+> 🧩 A diferencia de los arrays, que solo almacenan datos del mismo tipo, los structs permiten mezclar enteros, cadenas, arreglos, etc.
+
+---
+
+## 🧱 Sintaxis Básica
+
 ```c
-struct mi_registro
-{
-    <tipo_1> campo_1
-    <tipo_2> campo_2
+struct nombre_struct {
+    tipo1 campo1;
+    tipo2 campo2;
     ...
-    <tipo_n> campo_n
-}
+    tipoN campoN;
+};
 ```
-## Ejemplo
+
+---
+
+## 📌 Ejemplo
+
 ```c
-struct alumno
-{
-    char nombre[31]
-    int padron
-    char email[51]
-    int notas[5]
-    float promedio
+struct alumno {
+    char nombre[31];
+    int padron;
+    char email[51];
+    int notas[5];
+    float promedio;
 } Alumno = {
-    ...
-}
+    // valores opcionales
+};
 ```
 
-## Utlización
+---
+
+## ✅ Uso habitual con `typedef`
+
 ```c
-typedef struct
-{
-    char nombre[31]
-    int padron
-    char email[51]
-    int notas[5]
-    float promedio
+typedef struct {
+    char nombre[31];
+    int padron;
+    char email[51];
+    int notas[5];
+    float promedio;
 } alumno;
 
-alumno Alumno_1
-Alumno_1.nombre ---> %s
-Alumno_1.padron ---> %d
+alumno Alumno_1;
+printf("%s", Alumno_1.nombre);
+printf("%d", Alumno_1.padron);
 ```
 
-### Tablas
-La idea es expandir los registros, es decir, utilizar arrays de registros, esto permite utilizar Tablas; un venctor de Structs.
+> `typedef` nos permite evitar tener que escribir `struct` todo el tiempo.
 
-### Usar structs por referencia (Punteros)
-Para poder pasar structs por referencia a una funcion, y de esta forma modificar un valor dentro de la funcion para el struct y que este tenga impacto a nivel total del programa, pasamos por referencia el struct:
+---
+
+## 📊 Tablas (Vectores de Structs)
+
+Podemos construir **tablas** de registros usando arrays:
+
 ```c
-    Tstruct struct;
-    function(&struct);
+alumno lista_alumnos[100];
 ```
 
-## Definicion de la funcion:
+Esto permite organizar información estructurada de forma ordenada y eficiente, como si fuera una **tabla de base de datos en memoria**.
+
+---
+
+## 📬 Paso por referencia de structs
+
+Para **modificar un struct desde una función**, debemos pasarlo por referencia (usando punteros):
+
+### 🔁 Definición y llamada
 ```c
-    void functon(Tstruct *struct)
-    {
-        ...;
-    }
+alumno a;
+modificar(&a);
 ```
 
-### Dentro de la funcion:
+### 🔧 Implementación
 ```c
-    ...
-    struct->campo_1 = 123; // Desreferenciamos el struct y accedemos al campo.
-    strcpy(struct->campo_2, "Hola"); // Lo mismo si es un string.
-    ...
+void modificar(alumno *a) {
+    a->padron = 123456;
+    strcpy(a->nombre, "Juan Pérez");
+}
 ```
+
+> Usamos `->` para acceder a los campos del struct a través de un puntero (desreferenciación).
+
+---
+
+## 🛠️ Tips útiles
+
+- Los structs pueden incluir arrays, otros structs o punteros.
+- Se pueden usar como parámetros y retornos de funciones.
+- Muy útiles para representar entidades del mundo real.
