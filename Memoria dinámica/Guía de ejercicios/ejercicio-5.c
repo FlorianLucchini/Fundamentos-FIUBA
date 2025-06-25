@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
+// 5) Escribir un programa el cual reserve memoria dinámica para almacenar una cantidad n de struct del tipo t_alumno (ver anexo). El usuario debe ingresar la cantidad n. Luego solicitar al usuario que ingrese los datos de los n alumnos y almacenarlos en la memoria previamente reservada. Mostrar luego todos los datos de todos los alumnos. Liberar la memoria reservada al finalizar el programa.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,14 +9,6 @@ typedef struct {
     char apellido[30];
 } T_alumno;
 
-int ingresar_cantidad()
-{
-    int n;
-    printf("Ingrese la cantidad de alumnos: ");
-    scanf("%d", &n);
-    return n;
-}
-
 int cargar_alumno(T_alumno *alumno)
 {
     printf("Ingrese los datos del alumno.\n");
@@ -29,16 +18,6 @@ int cargar_alumno(T_alumno *alumno)
     scanf(" %30[^\n]s", alumno->nombre);
     printf("Ingrese el apellido: ");
     scanf(" %30[^\n]s", alumno->apellido);
-    return 0;
-}
-
-int cargar_alumnos(T_alumno alumnos[], int n)
-{
-    int i;
-    for(i = 0; i < n; i++)
-    {
-        cargar_alumno(alumnos + i);
-    }
     return 0;
 }
 
@@ -56,7 +35,8 @@ int mostrar_alumnos(T_alumno alumnos[], int n)
     int i;
     for(i = 0; i < n; i++)
     {
-        mostrar_datos_alumno(*(alumnos + i));
+        printf("\nAlumno Nro %d:\n", i + 1);
+        mostrar_datos_alumno(alumnos[i]);
     }
     return 0;
 }
@@ -64,15 +44,20 @@ int mostrar_alumnos(T_alumno alumnos[], int n)
 int main()
 {   
     T_alumno *alumnos = NULL;
-    int n;
+    int n, i;
 
-    n = ingresar_cantidad();
+    printf("Ingrese la cantidad n de alumnos: ");
+    scanf("$d", &n);
 
     alumnos = malloc(sizeof(T_alumno) * n);
 
     if(alumnos != NULL)
     {
-        cargar_alumnos(alumnos, n);
+        for(i = 0; i < n; i++)
+        {
+            printf("\nAlumno Nro *%d:\n", i + 1);
+            cargar_alumno(alumnos + i);
+        }
         mostrar_alumnos(alumnos, n);
     }
     else

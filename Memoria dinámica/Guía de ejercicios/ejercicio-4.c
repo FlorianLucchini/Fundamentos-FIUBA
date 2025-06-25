@@ -12,6 +12,7 @@ typedef struct {
 
 int cargar_alumno(T_alumno *alumno)
 {
+    printf("Ingrese los datos del alumno.\n");
     printf("Ingerese el padron: ");
     scanf("%d", &alumno->padron);
     printf("Ingrese el nombre: ");
@@ -23,6 +24,7 @@ int cargar_alumno(T_alumno *alumno)
 
 int mostrar_datos_alumno(T_alumno alumno)
 {
+    printf("Los datos del alumno: ");
     printf("\nPadron: %d", alumno.padron);
     printf("\nNombre: %s", alumno.nombre);
     printf("\nApellido: %s\n", alumno.apellido);
@@ -38,12 +40,12 @@ int main()
     {
         cargar_alumno(alumno);
         mostrar_datos_alumno(*alumno);
-        free(alumno);
     }
     else
     {
         printf("Error al reservar la memoria.\n");
     }
 
+    free(alumno);
     return 0;
 }
