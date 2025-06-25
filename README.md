@@ -1,22 +1,44 @@
-*Estas son las actividades de la materia "Fundamentos de la Programación" de la carrera Ingeniería Informática (Primer año), de la cátedra Azcurra.*
+# 📚 Fundamentos de la Programación – FIUBA
 
-*La materia se dictó en C, por ende, el repositorio es integramente C puro.*
+Este repositorio contiene las actividades realizadas durante la cursada de la materia **Fundamentos de la Programación** correspondiente al **primer año** de la carrera de **Ingeniería Informática** en la **Facultad de Ingeniería de la UBA (FIUBA)**, **cátedra Azcurra**.
 
-### **Estilo de codificación en C (C Coding Style)**
-En esta guía buscaremos presentar una convención para escribir nuestros programas en lenguaje C.
+🖥️ **Lenguaje utilizado:** C puro  
+📆 Año de cursada: 1° año, ciclo básico  
+📌 Modalidad: Trabajos prácticos y ejercicios en C
 
-El propósito de utilizar una convención estandarizada es:
-- Organizar nuestro código de forma clara.
-- Que el código sea fácil de leer para otros colegas.
-- Que el código sea fácil de comprender.
-- Que el código sea fácil de mantener.
-- Simplificar la detección de errores en él.
+---
 
-Para escribir código en C existen múltiples convenciones de estilo, por ejemplo:
-- [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
-- [Kernighan & Ritchie style](https://en.wikipedia.org/wiki/Indentation_style#K&R)
-- [GNU coding standard](https://www.gnu.org/prep/standards/html_node/Writing-C.html)
+## 🎯 Objetivo del Repositorio
 
-Existen otros más, recomendamos la adopción de algún estándar particular, para el desarrollo de este curso adoptaremos las principales características del Linux kernel coding style, esta convención es una variante de la propuesta por por Kernighan y Ritchie, los autores del libro “The C Programming Language”.
+- Reunir y documentar los ejercicios de la materia.
+- Practicar una correcta organización y estilo de codificación.
+- Desarrollar un entendimiento sólido del lenguaje C y sus fundamentos.
 
-Todas las actividades y ejercicios que se verán pueden encontrarlos en la [Guía de ejercicios](https://campusgrado.fi.uba.ar/pluginfile.php/243869/mod_resource/content/3/GuiaEjerciciosBasicosC.pdf)
+---
+
+## 🎨 Estilo de Codificación en C (C Coding Style)
+
+Una buena práctica al programar es seguir una **convención de estilo**. Esto facilita:
+
+✔️ Leer el código propio y ajeno  
+✔️ Comprender fácilmente el propósito de cada función o bloque  
+✔️ Mantener el código a lo largo del tiempo  
+✔️ Detectar errores más rápidamente
+
+### 📌 Algunas convenciones conocidas
+
+- [Linux Kernel Coding Style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)  
+- [Kernighan & Ritchie Style (K&R)](https://en.wikipedia.org/wiki/Indentation_style#K&R)  
+- [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Writing-C.html)
+
+🔧 En este curso adoptamos principalmente el **Linux Kernel Coding Style**, una variante clara y legible derivada del estilo original de Kernighan & Ritchie.
+
+---
+
+## 📘 Recursos útiles
+
+📄 [Guía de Ejercicios - Fundamentos de la Programación (PDF)](https://campusgrado.fi.uba.ar/pluginfile.php/243869/mod_resource/content/3/GuiaEjerciciosBasicosC.pdf)
+
+---
+
+> ✨ ¡Esperamos que este repositorio te sea útil para repasar y aprender C de forma práctica y clara!
