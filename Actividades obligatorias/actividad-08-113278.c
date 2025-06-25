@@ -65,7 +65,7 @@ void cargar_productos(FILE *archivo)
     Tproducto Producto;
     int i;
 
-    archivo = fopen("Stock.dat", "ab");
+    archivo = fopen("Stock.dat", "wb");
     if (archivo == NULL)
     {
         printf("Error al abrir el archivo.\n");
