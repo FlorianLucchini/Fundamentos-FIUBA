@@ -3,7 +3,7 @@
 
 #define MF 20
 
-typedef Tvec[MF];
+typedef int Tvec[MF];
 
 int binary_search(Tvec vec, int ml, int value)
 {
