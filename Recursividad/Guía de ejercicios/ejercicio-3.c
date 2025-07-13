@@ -6,26 +6,7 @@
 
 typedef int Tvec[MF];
 
-int binary_search(Tvec vect, int val, int min, int max)
-{   
-    int mid;
-    if(val < vect[min] || vect[max] < val)
-        return -1;
-    else
-    {
-        min + ( (max - min) / 2 );
-        mid = (max + min) / 2;
-        if(val == vect[mid])
-            return mid;
-        else
-        {
-            if(vect[mid] < val)
-                return binary_search(vect, val, mid + 1, max);
-            else
-                return binary_search(vect, val, min, max - 1);
-        }
-    }
-}
+int binary_search(Tvec vect, ...) {}
 
 int main()
 {

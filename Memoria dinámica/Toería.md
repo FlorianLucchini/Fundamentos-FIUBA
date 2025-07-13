@@ -1,4 +1,3 @@
-
 # 🧠 Manejo de Memoria en C
 
 Este documento resume los conceptos clave sobre cómo se organiza y se gestiona la memoria en C, incluyendo punteros, memoria dinámica, estructuras complejas, buenas prácticas y herramientas como **Valgrind**.

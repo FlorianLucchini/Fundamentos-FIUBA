@@ -3,30 +3,50 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MF 30
+
+typedef char string[50];
+
 typedef struct {
     int padron;
-    char nombre[30];
-    char apellido[30];
+    string nombre;
+    string apellido;
 } T_alumno;
 
-int cargar_alumno(T_alumno *alumno)
+int solicitar_n(int *n)
 {
-    printf("Ingrese los datos del alumno.\n");
-    printf("Ingerese el padron: ");
-    scanf("%d", &alumno->padron);
-    printf("Ingrese el nombre: ");
+    printf("Ingrese la cantidad de alumnos a guardar: ");
+    scanf("%d", n);
+}
+
+int ingresar_alumnno(T_alumno *alumno)
+{
+    printf("Padron: ");
+    scanf("%d", &(alumno->padron));
+    printf("Nombre: ");
     scanf(" %30[^\n]s", alumno->nombre);
-    printf("Ingrese el apellido: ");
+    printf("Apellido: ");
     scanf(" %30[^\n]s", alumno->apellido);
     return 0;
 }
 
-int mostrar_datos_alumno(T_alumno alumno)
+int ingresar_alumnos(T_alumno alumnos[], int n)
 {
-    printf("Los datos del alumno: ");
-    printf("\nPadron: %d", alumno.padron);
-    printf("\nNombre: %s", alumno.nombre);
-    printf("\nApellido: %s\n", alumno.apellido);
+    int i;
+    for(i = 0; i < n; i++)
+    {
+        printf("A continuacion ingrese los datos del alumno N*%d: \n", i);
+        ingresar_alumnno(alumnos + i);
+        // ingresar_alumnos(&alumnos[i]);
+    }
+    return 0;
+}
+
+int mostrar_alumno(T_alumno alumno)
+{
+    printf("Padro: %d \n", alumno.padron);
+    printf("Nombre: %s \n", alumno.nombre);
+    printf("Apellido: %s \n", alumno.apellido);
     return 0;
 }
 
@@ -35,35 +55,25 @@ int mostrar_alumnos(T_alumno alumnos[], int n)
     int i;
     for(i = 0; i < n; i++)
     {
-        printf("\nAlumno Nro %d:\n", i + 1);
-        mostrar_datos_alumno(alumnos[i]);
+        printf("A continuacion se mostraran los datos del alumno N*%d \n", i);
+        mostrar_alumno(alumnos[i]);
     }
     return 0;
 }
 
 int main()
-{   
+{
+    int n;
     T_alumno *alumnos = NULL;
-    int n, i;
-
-    printf("Ingrese la cantidad n de alumnos: ");
-    scanf("$d", &n);
-
-    alumnos = malloc(sizeof(T_alumno) * n);
-
+    solicitar_n(&n);
+    alumnos = malloc(n * sizeof(T_alumno));
     if(alumnos != NULL)
     {
-        for(i = 0; i < n; i++)
-        {
-            printf("\nAlumno Nro *%d:\n", i + 1);
-            cargar_alumno(alumnos + i);
-        }
+        ingresar_alumnos(alumnos, n);
         mostrar_alumnos(alumnos, n);
     }
     else
-    {
-        printf("Error al reservar la memoria.\n");
-    }
+        printf("No se pudo almacenar la memoria. \n");
 
     free(alumnos);
     return 0;

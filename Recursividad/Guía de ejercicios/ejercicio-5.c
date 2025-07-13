@@ -5,19 +5,7 @@
 
 typedef int Tvec[MF];
 
-int mayor_valor_vector_recu(Tvec vec, int ml)
-{
-    if (ml == 1) {
-        return vec[0];
-    } else {
-        int max_restante = maximo(vec, ml - 1);
-        if (vec[ml - 1] > max_restante) {
-            return vec[ml - 1];
-        } else {
-            return max_restante;
-        }
-    }
-}
+int mayor_valor_vector_recu(Tvec vec, int ml) {}
 
 int mayor_valor_vector(Tvec vec, int ml)
 {
