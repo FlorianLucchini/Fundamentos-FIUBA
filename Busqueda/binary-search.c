@@ -7,38 +7,38 @@ typedef int Tvec[MF];
 
 int binary_search(Tvec vec, int ml, int value)
 {
-    int inf, sup, mid;
+    int min, max, mid, pos;
     bool finished;
-    int pos = -1;
 
-    inf = 0;
-    sup = ml - 1;
     finished = false;
+    min = 0;
+    max = ml - 1;
+    pos = -1;
 
     while(!finished)
     {
-        if( ( value > vec[sup] ) || ( value < vec[inf] ) )
+        if(value < vec[min] || value > vec[max])
         {
-            finished = true;
             pos = -1;
+            finished = true;
         }
         else
         {
-            mid = (inf + sup) / 2;
-
-            if( value == vec[mid] )
+            mid = min + ((max - min) / 2);
+            if(value == vec[mid])
             {
                 finished = true;
                 pos = mid;
             }
             else
             {
-                if( value > vec[mid] )
-                    inf = mid + 1;
+                if(value > vec[mid])
+                    min = mid + 1;
                 else
-                    sup = mid - 1;
+                    max = mid - 1;
             }
         }
     }
+
     return pos;
 }
