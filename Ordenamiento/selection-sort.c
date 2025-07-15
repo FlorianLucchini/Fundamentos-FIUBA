@@ -29,8 +29,6 @@ void selection_sort(Tvec vec, int ml)
         vec[i] = vec[min];
         vec[min] = aux;
     }
-
-
 }
 
 int main()
