@@ -9,13 +9,19 @@ int solicitar_num(int *num)
     return 0;
 }
 
-int invertir(int num) {}
+int invertir(int num, int *inv)
+{
+    if(num == 0)
+        return *inv;
+    else
+        return invertir(num / 10, (num % 10) + (*inv * 10));
+}
 
 int main()
 {
-    int num, inv;
+    int num, inv = 0;
     solicitar_num(&num);
-    inv = invertir(num);
-    printf("El numero invertido es: ", inv);
+    invertir(num, &inv);
+    printf("El numero invertido es: %d", inv);
     return 0;
 }

@@ -11,7 +11,7 @@ bool es_binario(long long int num)
     else
     {
         dig = num % 10;
-        if(dig != 1 && dig != 0)
+        if(dig != 1 || dig != 0)
             return false;
         else
             return es_binario(num / 10);

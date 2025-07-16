@@ -10,7 +10,6 @@ int potencia(int a, int b)
         return a * potencia(a, b - 1);
 }
 
-
 int main()
 {
     int a = 5;
