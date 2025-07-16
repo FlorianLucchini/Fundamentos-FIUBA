@@ -3,6 +3,24 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+int invertir(int num, int inv)
+{
+    if(num == 0)
+        return inv;
+    else
+        return invertir(num / 10, (num % 10) + (inv * 10));
+}
+
+bool es_capicua(int num)
+{
+    int inv;
+    inv = invertir(num, 0);
+    if(num == inv)
+        return true;
+    else
+        return false;
+}
+
 int mostrar_resultado(bool es_capicua, int num)
 {
     if(es_capicua)
@@ -14,7 +32,7 @@ int mostrar_resultado(bool es_capicua, int num)
 
 int main()
 {
-    int num = 101;
+    int num = 102;
     mostrar_resultado(es_capicua(num), num);
     return 0;
 }

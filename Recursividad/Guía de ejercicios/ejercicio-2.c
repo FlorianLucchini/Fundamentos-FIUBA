@@ -1,6 +1,12 @@
 // Desarrollar un programa que calcule y muestre por pantalla los primeros N términos de la sucesión de Fibonacci en forma recursiva
 
-int fibonacci(int n) {}
+int fibonacci(int n) 
+{
+    if(n <= 1)
+        return n;
+    else    
+        return fibonacci(n - 2) + fibonacci(n - 1);
+}
 
 int main()
 {

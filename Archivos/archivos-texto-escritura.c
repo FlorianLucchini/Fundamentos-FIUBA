@@ -60,8 +60,8 @@ void main()
         escritura_fputc(archivo);
         printf("\nEscritura con fgets:\n");
         escritura_fputs(archivo);
-        printf("\nEscritura con fscanf:\n");
-        lectura_fscand(archivo);
+        printf("\nEscritura con fprintf:\n");
+        escritura_fprintf(archivo);
     }
 
     return;

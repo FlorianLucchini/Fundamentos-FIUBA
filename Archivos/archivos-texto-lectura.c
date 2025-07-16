@@ -30,7 +30,7 @@ void lectura_fgets(FILE *archivo)
     fclose(archivo);
 }
 
-void lectura_fscand(FILE *archivo)
+void lectura_fscanf(FILE *archivo)
 {
     char cadena[MAX_FSCANF];
 
@@ -41,7 +41,7 @@ void lectura_fscand(FILE *archivo)
         fscanf(archivo, "%s", cadena);
     }
 
-    fclose(archivo);
+    fclose(archivo);    
 }
 
 void main()
@@ -58,7 +58,7 @@ void main()
         printf("\nLectura con fgets:\n");
         lectura_fgets(archivo);
         printf("\nLectura con fscanf:\n");
-        lectura_fscand(archivo);
+        lectura_fscanf(archivo);
     }
 
     return;

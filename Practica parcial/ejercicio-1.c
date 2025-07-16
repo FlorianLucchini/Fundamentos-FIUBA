@@ -41,7 +41,6 @@ typedef T_Libro T_Tabla[MF_REGISTROS];
 int cargar_libros(FILE *archivo)
 {
     T_Libro Libro;
-    int i;
 
     archivo = fopen("Libros.dat", "ab"); // Utilizo "a" en vez de "w" ya que el enunciado menciona "cargar nuevos libros" lo que implica una previa existencia de otros.
 
@@ -52,7 +51,6 @@ int cargar_libros(FILE *archivo)
         printf("A continuacion ingrese el codigo del libro a almacenar (0 para terminar): ");
         scanf("%d", &Libro.isbn);
 
-        i = 0;
         while(Libro.isbn != 0)
         {
             printf("Ingrese el titulo: ");
@@ -68,7 +66,6 @@ int cargar_libros(FILE *archivo)
             scanf("%d", &Libro.cantidad);
 
             fwrite(&Libro, sizeof(Libro), 1, archivo);
-            i++;  
 
             printf("Continuemos con un nuevo libro.\n");
             printf("Ingrese el codigo (0 para finalizar): ");
